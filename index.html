@@ -637,7 +637,6 @@ src="https://www.facebook.com/tr?id=4560553747537296&ev=PageView&noscript=1"
               <li>Fender Telecaster (American) Custom 60's Reissue</li>
               <li>Fender Stratocaster (American)</li>
               <li>Gibson Les Paul Traditional</li>
-              <li>Hofner Ignition Bass</li>
               <li>Fender Bronco Bass</li>
               <li>Marshall JCM2000</li>
               <li>Fender Blues Junior</li>
@@ -648,10 +647,23 @@ src="https://www.facebook.com/tr?id=4560553747537296&ev=PageView&noscript=1"
             <div class="equip-cat">Keys / Synths</div>
             <ul class="equip-items">
               <li>Knight K10 Upright Piano</li>
-              <li>Sequential Prophet 6</li>
-              <li>Moog Little Phatty</li>
+              <li>Moog Subsequent 37</li>
               <li>Yamaha Portasound PS3</li>
               <li>Arturia Wireless MIDI Keyboard</li>
+              <li>Korg Volca Beats</li>
+              <li>Native Instruments Maschine+</li>
+            </ul>
+          </div>
+          <div class="equip-row">
+            <div class="equip-cat">FX</div>
+            <ul class="equip-items">
+              <li>Strymon Big Sky</li>
+              <li>Strymon Mobius</li>
+              <li>Origin Effects Cali 76</li>
+              <li>Catalinbread Echorec</li>
+              <li>T-Rex Ducktail</li>
+              <li>Electro-Harmonix Soul Food</li>
+              <li>Electro-Harmonix Big Muff</li>
             </ul>
           </div>
         </div>
@@ -892,8 +904,11 @@ x:0,y:0};var a=this.getPoint([this.a.x,this.b.x,this.c.x,this.d.x],[this.a.y,thi
 
     var lastBlock = null;     // the path most recently engaged
     var lastStart = -1;       // palette index the previous block started on
+    var enabled = false;      // guard: the intro poll and the safety timeout both call enable()
 
     function enable(){
+      if (enabled) return;
+      enabled = true;
       hero.classList.add('interactive');
       [].forEach.call(hero.querySelectorAll('path'), function(p){
         // Stop a click+drag on the logo from selecting nearby page text.
