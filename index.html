@@ -697,7 +697,7 @@ x:0,y:0};var a=this.getPoint([this.a.x,this.b.x,this.c.x,this.d.x],[this.a.y,thi
 
     var FINAL = ["M0 0H200V200H0V0Z", "M1435 0H1635V200H1435V0Z", "M205 0H405L306 200H205V0Z", "M1640 0H1840L1741 200H1640V0Z", "M205 405H405L306 205H205V405Z", "M1640 405H1840L1741 205H1640V405Z", "M0 205H200V405H0V205Z", "M1435 205H1635V405H1435V205Z", "M410 205H610V405H410V205Z", "M410 0H610V200H410V0Z", "M615 205H815V405C704.543 405 615 315.457 615 205Z", "M615 200C615 89.5431 704.543 0 815 0V200H615Z", "M820 205H1020C1020 315.457 930.457 405 820 405V205Z", "M820 0C930.457 0 1020 89.5431 1020 200H820V0Z", "M1125 100C1125 44.7715 1169.77 0 1225 0V200H1125V100Z", "M1025 205H1225V405H1025V205Z", "M1230 0H1430V200H1230V0Z", "M1230 205H1330V305C1330 360.228 1285.23 405 1230 405V205Z"];
     var SEED = "M914 196H926V208H914Z";
-    var P = { stagger:80, hold:300, dur:1700 };
+    var P = { stagger:80, hold:100, dur:1700 };
     var easeOutExpo = function(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10*t); };
 
     // Build the morph cells + interpolators (seed -> final), ordered left→right.
@@ -775,8 +775,8 @@ x:0,y:0};var a=this.getPoint([this.a.x,this.b.x,this.c.x,this.d.x],[this.a.y,thi
         }
         // Finish slightly before the easing tail fully settles — the last
         // few percent of the expo curve is visually imperceptible but slow,
-        // and waiting for it delays scroll. End at ~90% and snap to final.
-        if (now - start < total * 0.9) {
+        // and waiting for it delays scroll. End at ~87% and snap to final.
+        if (now - start < total * 0.87) {
           raf = requestAnimationFrame(frame);
         } else {
           finish();
